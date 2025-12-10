@@ -12,7 +12,7 @@ def getfruit(fruit):
 
 
 
-fruits = getfruit("apple")
+fruits = getfruit("Persimmon")
 """print(fruits)
 for key, value in fruits.items():
     print(key, "→", value)"""
