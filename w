@@ -32,7 +32,7 @@ entry.pack(pady = 5)
 result_label = tk.Label(window, text = "", font = ("Arial", 14, "bold"), fg = "green")
 result_label.pack(pady = 15)
 
-def getfruit():
+def getfruit(text):
     text = entry.get()
     response = requests.get(f"https://www.fruityvice.com/api/fruit/{text.lower()}")
     if response.status_code != 200:
@@ -42,6 +42,8 @@ def getfruit():
     data = response.json()
     return data
 
-for key, value in text.items():
+fruits = getfruit()
+
+for key, value in fruits.items():
     print(f"{key.title()}: {value}")
 
