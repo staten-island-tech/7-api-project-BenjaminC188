@@ -47,7 +47,7 @@ prompt.pack(pady = 10)
 entry = tk.Entry(window, font = ("Arial", 14), width = 30)
 entry.pack(pady = 5)
 result_label = tk.Label(window, text = "", font = ("Arial", 14, "bold"), fg = "blue")
-result_label.pack(pack = 15)
+result_label.pack(pady = 15)
 
 def getfruit(fruit):
     response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit.lower()}")
@@ -58,11 +58,26 @@ def getfruit(fruit):
     data = response.json()
     return data
 
-fruits = getfruit(entry)
+fruits = getfruit("")
 print(fruits)
 
 for key, value in fruits.items():
     print(f"{key.title()}: {value}")
 
-button = tk.Button(window, text = "Search", font = ("Arial", 14), command = getfruit)
+entry = entry.get()
+
+button = tk.Button(window, text = "Search", font = ("Arial", 14), command = getfruit
+    response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit.lower()}")
+    if response.status_code != 200:
+        print("Error fetching data!")
+        return None
+
+    data = response.json()
+    return data
+
+fruits = getfruit("")
+print(fruits)
+
+for key, value in fruits.items():
+    print(f"{key.title()}: {value}"))
 button.pack(pady = 10)
