@@ -20,64 +20,42 @@ for key, value in fruits.items():
 for key, value in fruits.items():
     print(f"{key.title()}: {value}")"""
 
-
-def getfruit(fruit):
-    response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit.lower()}")
-    if response.status_code != 200:
-        print("Error fetching data!")
-        return None
-
-    data = response.json()
-    return data
-
-fruits = getfruit("apple")
-print(fruits)
-
-for key, value in fruits.items():
-    print(f"{key.title()}: {value}")
-
-
-
 window = tk.Tk()
 window.title("Fruit Search")
 window.geometry("400x250")
 window.resizable(False, False)
-prompt = tk.Label(window, text = "Search a Furit for info", font = ("Arial, 14"))
-prompt.pack(pady = 10)
-entry = tk.Entry(window, font = ("Arial", 14), width = 30)
-entry.pack(pady = 5)
-result_label = tk.Label(window, text = "", font = ("Arial", 14, "bold"), fg = "blue")
-result_label.pack(pady = 15)
+
+prompt = tk.Label(window, text="Search a Fruit for info", font=("Arial", 14))
+prompt.pack(pady=10)
+
+entry = tk.Entry(window, font=("Arial", 14), width=30)
+entry.pack(pady=5)
+
+result_label = tk.Label(window, text="", font=("Arial", 14, "bold"))
+result_label.pack(pady=15)
+
+button = tk.Button(window, text="Search", font=("Arial", 14), command=button_click)
+button.pack(pady=10)
+
+window.mainloop()
 
 def getfruit(fruit):
     response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit.lower()}")
     if response.status_code != 200:
-        print("Error fetching data!")
         return None
+    return response.json()
 
-    data = response.json()
-    return data
 
-fruits = getfruit("")
-print(fruits)
+def button_click():
+    fruit = entry.get()
 
-for key, value in fruits.items():
-    print(f"{key.title()}: {value}")
+    fruits = getfruit(fruit)
+    if fruits == False:
+        result_label.config(text="Fruit not found", fg="red")
+        return
 
-entry = entry.get()
+    text = ""
+    for key, value in fruits.items():
+        text += f"{key.title()}: {value}"
 
-button = tk.Button(window, text = "Search", font = ("Arial", 14), command = getfruit
-    response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit.lower()}")
-    if response.status_code != 200:
-        print("Error fetching data!")
-        return None
-
-    data = response.json()
-    return data
-
-fruits = getfruit("")
-print(fruits)
-
-for key, value in fruits.items():
-    print(f"{key.title()}: {value}"))
-button.pack(pady = 10)
+    result_label.config(text=text, fg="blue")
