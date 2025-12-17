@@ -25,19 +25,14 @@ window.title("Fruit Search")
 window.geometry("400x250")
 window.resizable(False, False)
 
-prompt = tk.Label(window, text="Search a Fruit for info", font=("Arial", 14))
+prompt = tk.Label(window, text = "Search a Fruit for info", font = ("Arial", 14))
 prompt.pack(pady=10)
 
-entry = tk.Entry(window, font=("Arial", 14), width=30)
+entry = tk.Entry(window, font = ("Arial", 14), width = 30)
 entry.pack(pady=5)
 
 result_label = tk.Label(window, text="", font=("Arial", 14, "bold"))
 result_label.pack(pady=15)
-
-button = tk.Button(window, text="Search", font=("Arial", 14), command=button_click)
-button.pack(pady=10)
-
-window.mainloop()
 
 def getfruit(fruit):
     response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit.lower()}")
@@ -46,16 +41,20 @@ def getfruit(fruit):
     return response.json()
 
 
-def button_click():
+def search():
     fruit = entry.get()
 
     fruits = getfruit(fruit)
-    if fruits == False:
-        result_label.config(text="Fruit not found", fg="red")
+    if fruits == None:
+        result_label.config(text = "Fruit not found", fg = "red")
         return
+    else:
+        text = ""
+        for key, value in fruits.items():
+            text == f"{key.title()}: {value}"
 
-    text = ""
-    for key, value in fruits.items():
-        text += f"{key.title()}: {value}"
+button = tk.Button(window, text="Search", font=("Arial", 14), command = search)
+button.pack(pady=10)
+window.mainloop()
 
-    result_label.config(text=text, fg="blue")
+result_label.config(text = "", fg="blue")
