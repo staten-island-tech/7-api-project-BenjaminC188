@@ -22,7 +22,7 @@ for key, value in fruits.items():
 
 window = tk.Tk()
 window.title("Fruit Search")
-window.geometry("400x250")
+window.geometry("1000x500")
 window.resizable(False, False)
 
 prompt = tk.Label(window, text = "Search a Fruit for info", font = ("Arial", 14))
@@ -31,8 +31,8 @@ prompt.pack(pady=10)
 entry = tk.Entry(window, font = ("Arial", 14), width=30)
 entry.pack(pady=5)
 
-result_label = tk.Label(window, text = "", font = ("Arial", 12), width = (350), height = (125))
-result_label.pack(pady=15)
+result_label = tk.Label(window, text = "", font = ("Arial", 12))
+result_label.pack()
 
 def getfruit(fruit):
     response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit.lower()}")
@@ -50,7 +50,7 @@ def search():
 
     text = ""
     for key, value in fruits.items():
-        text += f"{key.title()}: {value}"
+        text += f"{key.title()}: {value}\n"
 
     result_label.config(text = text, fg = "blue")
 
