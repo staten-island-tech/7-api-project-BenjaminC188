@@ -31,7 +31,7 @@ prompt.pack(pady=10)
 entry = tk.Entry(window, font = ("Arial", 14), width=30)
 entry.pack(pady=5)
 
-result_label = tk.Label(window, text = "", font = ("Arial", 12))
+result_label = tk.Label(window, text = "", font = ("Arial", 12), width = (350), height = (125))
 result_label.pack(pady=15)
 
 def getfruit(fruit):
