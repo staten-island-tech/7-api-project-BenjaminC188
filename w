@@ -22,7 +22,7 @@ for key, value in fruits.items():
 
 window = tk.Tk()
 window.title("Fruit Search")
-window.geometry("1000x500")
+window.geometry("650x300")
 window.resizable(False, False)
 
 prompt = tk.Label(window, text = "Search a Fruit for info", font = ("Arial", 14))
