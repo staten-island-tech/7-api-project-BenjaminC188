@@ -10,8 +10,6 @@ import tkinter as tk
     data = response.json()
     return data
 
-
-
 fruits = getfruit("Persimmon")
 print(fruits)
 for key, value in fruits.items():
