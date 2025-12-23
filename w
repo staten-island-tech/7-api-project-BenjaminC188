@@ -56,3 +56,82 @@ button = tk.Button(window, text = "Search", font = ("Arial", 14), command = sear
 button.pack(pady = 10)
 
 window.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+from PIL import Image, ImageTk
+image = Image.open("download.jpg")
+image = image.resize((300, 200))
+photo = ImageTk.PhotoImage(image)
+label = tk.Label(window, image=photo)
+label.pack(padx=20, pady=20)
+label.image = photo
+"""
